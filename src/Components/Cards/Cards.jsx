@@ -3,7 +3,7 @@ import { useStateProducts } from "../../States/useStateProducts/useStateProducts
 import axios from "axios";
 import Card from "../Card/Card";
 
-const apiUrl = "https://fakestoreapi.com/products";
+const apiUrl = "http://localhost:3000/productos";
 
 const Cards = () => {
   const{resultado, setResultado} = useStateProducts();

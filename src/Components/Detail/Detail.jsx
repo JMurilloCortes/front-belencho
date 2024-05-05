@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useStateProductDetail } from "../../States/useStateProductDetail/useStateProductDetail";
 
-const apiUrl = "https://fakestoreapi.com/products";
+const apiUrl = "http://localhost:3000/productos";
 
 const Detail = () => {
   const { id } = useParams();
@@ -32,20 +32,20 @@ const Detail = () => {
   }
 
   // Generar las 5 estrellas, colorear las primeras 'rating' estrellas
-  const ratingStars = [...Array(5)].map((_, index) => (
-    <svg
-      key={index}
-      fill={index < Math.round(item.rating?.rate) ? "currentColor" : "none"}
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      className="w-4 h-4 text-green-500"
-      viewBox="0 0 24 24"
-    >
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-    </svg>
-  ));
+  // const ratingStars = [...Array(5)].map((_, index) => (
+  //   <svg
+  //     key={index}
+  //     fill={index < Math.round(item.rating?.rate) ? "currentColor" : "none"}
+  //     stroke="currentColor"
+  //     strokeLinecap="round"
+  //     strokeLinejoin="round"
+  //     strokeWidth="2"
+  //     className="w-4 h-4 text-green-500"
+  //     viewBox="0 0 24 24"
+  //   >
+  //     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+  //   </svg>
+  // ));
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
@@ -54,18 +54,18 @@ const Detail = () => {
           <img
             alt="ecommerce"
             className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-            src={item.image}
+            src={item.imagenes[1]}
           ></img>
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
-              {item.category}
+              {item.categoria}
             </h2>
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-              {item.title}
+              {item.nombre}
             </h1>
             <div className="flex mb-4">
               <span className="flex items-center">
-                <span className="flex text-gray-600 ml-3">{ratingStars}</span>
+                {/* <span className="flex text-gray-600 ml-3">{ratingStars}</span> */}
               </span>
               <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
                 <a className="text-gray-500">
@@ -106,7 +106,7 @@ const Detail = () => {
                 </a>
               </span>
             </div>
-            <p className="leading-relaxed">{item.description}</p>
+            <p className="leading-relaxed">{item.descripcion}</p>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
               <div className="flex">
                 <span className="mr-3">Color</span>
@@ -141,7 +141,7 @@ const Detail = () => {
             </div>
             <div className="flex">
               <span className="title-font font-medium text-2xl text-gray-900">
-                ${item.price}
+                ${item.precio}
               </span>
               <button className="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">
                 Button
